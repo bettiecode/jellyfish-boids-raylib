@@ -118,7 +118,9 @@ Vector2 cohesion(Boid &b) //calc. cohesion, offset from avg. pos of other boids
             result=Vector2Add(result,b2.pos); //add to sum
         }
     }
-    result=Vector2Scale(result,1/(boids.size()-1)*cFactor); //divide by size-1 to get the avg., then apply cFactor
+    result=Vector2Scale(result,1/(boids.size()-1)); //divide by size-1 to get the avg.
+    result=Vector2Subtract(b.pos,result); //get diff
+    result=Vector2Scale(result,cFactor); //scale by cFactor
     return result; 
 }
 Vector2 alignment(Boid &b) //calc. alingment, offset from avg. vel of other boids
@@ -131,7 +133,9 @@ Vector2 alignment(Boid &b) //calc. alingment, offset from avg. vel of other boid
             result=Vector2Add(result,b2.vel); //add to sum
         }
     }
-    result=Vector2Scale(result,1/(boids.size()-1)*aFactor); //divide by size-1 to get the avg., then apply aFactor
+    result=Vector2Scale(result,1/(boids.size()-1)); //divide by size-1 to get the avg.
+    result=Vector2Subtract(b.vel,result); //get diff
+    result=Vector2Scale(result,aFactor); //scale by aFactor
     return result; 
 }
 Vector2 separation(Boid &b) //calc. separation, force acting as collision
