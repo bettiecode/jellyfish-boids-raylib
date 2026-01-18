@@ -3,8 +3,8 @@
 #include "constants.h"
 #include <ctime>
 #include <iostream>
-#include "include/raymath.h"
-#include "include/raylib.h"
+#include <raymath.h>
+#include <raylib.h>
 
 //colors
 Color randRainbow() //random rgb with max saturation function
